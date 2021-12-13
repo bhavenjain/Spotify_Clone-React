@@ -6,7 +6,6 @@ import Player from './Components/Player'
 import './public/css/App.css'
 import { useDataLayerValue } from './DataLayer'
 
-// e0fcd052853c4a73981582ebc89031b6
 const spotify = new SpotifyWebApi()
 
 function App () {
@@ -38,7 +37,8 @@ function App () {
         })
       })
 
-      spotify.getPlaylist().then(response => {
+      spotify.getPlaylist('37i9dQZEVXcPt6TnE3xlwd').then(response => {
+        console.log(response)
         dispatch({
           type: 'SET_DISCOVER_WEEKLY',
           discover_weekly: response
@@ -47,7 +47,6 @@ function App () {
     }
   }, [])
 
-  console.log(token)
   return (
     <div className='app'>
       {token ? <Player spotify={spotify} /> : <Login />}
